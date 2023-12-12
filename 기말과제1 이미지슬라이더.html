@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 슬라이더</title>
+  <style>
+    header {
+      padding: 10px;
+      position: fixed;
+  
+      top: 0;
+      z-index: 1000;
+    }
+
+    #slider-container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    #slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    #prev, #next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -25px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    #prev { left: 0; }
+    #next { right: 0; }
+  </style>
+</head>
+<body>
+  <header>                 2302540김수향</header>
+<div id="slider-container">
+  <div id="slider">
+    <div class="slide">
+      <img src="C:\Users\budin\OneDrive\바탕 화면\다운로드1.jpeg" alt="이미지 1">
+      <div class="caption">이미지1</div>
+    </div>
+    <div class="slide">
+      <img src="C:\Users\budin\OneDrive\바탕 화면\다운로드2.jpeg" alt="이미지 2">
+      <div class="caption">이미지2</div>
+    </div>
+    <!-- 추가 이미지들을 필요에 따라 계속 추가 -->
+  </div>
+</div>
+
+<div id="prev" onclick="prevSlide()">&#10094;</div>
+<div id="next" onclick="nextSlide()">&#10095;</div>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else if (index >= totalSlides) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+
+    const translateValue = -currentIndex * 100 + '%';
+    document.getElementById('slider').style.transform = `translateX(${translateValue})`;
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  // 자동 슬라이드 넘김을 위한 코드
+  setInterval(() => {
+    nextSlide();
+  }, 3000);
+</script>
+
+</body>
+</html>

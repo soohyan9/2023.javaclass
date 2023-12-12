@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>핀터레스트 스타일 웹페이지</title>
+  <style>
+    header {
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #container {
+      max-width: 1200px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .pin {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .pin img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .pin .caption {
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header> 2302540김수향</header>
+<div id="container"></div>
+
+<script>
+  // 더미 데이터
+  const data = [
+    { image: '다운로드1.jpeg', caption: '이미지 1 캡션' },
+    { image: '다운로드2.jpeg', caption: '이미지 2 캡션' },
+    { image: '다운로드3.jpeg', caption: '이미지 3 캡션' },
+    { image: '다운로드4.jpeg', caption: '이미지 4 캡션' },
+    { image: '다운로드5.jpg', caption: '이미지 5 캡션' },
+    { image: '다운로드6.jpg', caption: '이미지 6 캡션' },
+    { image: '다운로드7.jpg', caption: '이미지 7 캡션' },
+    { image: '다운로드8.jpg', caption: '이미지 8 캡션' },
+    { image: '다운로드9.jpg', caption: '이미지 9 캡션' },
+    { image: '다운로드10.jpg', caption: '이미지 10 캡션' },
+    { image: '다운로드11.jpg', caption: '이미지 11 캡션' },
+    { image: '다운로드12.jpg', caption: '이미지 12 캡션' },
+    { image: '다운로드13.jpg', caption: '이미지 13 캡션' },
+    { image: '다운로드14.jpg', caption: '이미지 14 캡션' },
+    { image: '다운로드15.jpg', caption: '이미지 15 캡션' },
+    // 추가 데이터 추가 가능
+  ];
+
+  const container = document.getElementById('container');
+
+  // 데이터를 이용하여 각각의 타일을 생성하고 화면에 표시
+  data.forEach(item => {
+    const pin = document.createElement('div');
+    pin.className = 'pin';
+
+    const image = document.createElement('img');
+    image.src = item.image;
+    pin.appendChild(image);
+
+    const caption = document.createElement('div');
+    caption.className = 'caption';
+    caption.innerText = item.caption;
+    pin.appendChild(caption);
+
+    container.appendChild(pin);
+  });
+</script>
+
+</body>
+</html>
